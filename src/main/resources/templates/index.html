@@ -21,6 +21,10 @@
             <th>id</th>
             <th>Name</th>
         </tr>
+        <tr th:each="user: ${allProducts}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.country}"></td>
+        </tr>
         </thead>
     </table>
 </body>
