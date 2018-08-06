@@ -16,9 +16,10 @@ public class Article {
 
     private String context;
 
-
-    public Article(){
-
+    public Article(Integer id, String title, String context) {
+        this.id = id;
+        this.title = title;
+        this.context = context;
     }
 
 
@@ -45,4 +46,14 @@ public class Article {
     public void setContext(String context) {
         this.context = context;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", context='" + context + '\'' +
+                '}';
+    }
+
 }
