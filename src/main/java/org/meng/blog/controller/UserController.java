@@ -26,6 +26,7 @@ public class UserController {
 
     @GetMapping(value = "/add")
     public String adduser(@ModelAttribute("user") User user){
+
         return "add";
     }
 
@@ -33,7 +34,7 @@ public class UserController {
     public String adduser(@ModelAttribute("user") User user, ModelMap modelMap){
         userRespository.save(user);
         modelMap.addAttribute("users",userRespository.findAll());
-        return "index";
+        return "add";
     }
 
 /*

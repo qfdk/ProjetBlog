@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Blog</title>
 </head>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-primary ">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -31,7 +31,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/add">Add <span class="sr-only">(current)</span></a></li>
                 <li class="article"><a href="/addarticle">Article<span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
+                <li><a href="/resource">Resource</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -71,6 +71,9 @@
 
 <body>
     <div class="container">
+        <div class="page-header">
+            <h1 class="text-center"> Add Number</h1>
+        </div>
         <form th:action="@{/add}" th:object="${user}" method="post">
             <div class="form-group">
                 <label for="usernameInput">User Name</label>
@@ -82,7 +85,28 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <table class="table orginal">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>role</th>
+                <th>Operation</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}">IdUser</td>
+                <td th:text="${user.name}">NameUser</td>
+                <td th:text="${user.role}">RoleUser</td>
+                <td>
+                    <a class="btn btn-primary" th:href="@{/edit(id=${user.id})}">editUser</a>
+                    <a class="btn btn-danger" th:href="@{/delete(id=${user.id})}">deleteUser</a>
+                </td>
+            </tr>
+
+            </thead>
+        </table>
     </div>
 
 </body>
+
 </html>
