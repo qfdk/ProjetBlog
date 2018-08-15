@@ -16,6 +16,9 @@ public class Article {
 
     private String context;
 
+    public Article() {
+    }
+
     public Article(Integer id, String title, String context) {
         this.id = id;
         this.title = title;

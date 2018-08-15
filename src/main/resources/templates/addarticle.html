@@ -69,9 +69,11 @@
 </nav>
 <body>
 <div class="container">
+
     <div class="page-header">
         <h1 class="text-center"> BLOG </h1>
     </div>
+
     <div class="row">
         <div class="col-md-9">
             <form th:action="@{/addarticle}" th:object="${article}" method="post">
@@ -81,14 +83,17 @@
                     </label>
                     <input type="articletitre" th:field="*{title}" class="form-control" id="articleTitleInput" placeholder="Title"/>
                 </div>
-                <textarea class="form-control" rows="15"></textarea>
+                <div class="form-group">
+                    <textarea type="text" th:field="*{context}" class="form-control" rows="15" id="articleContextInput" placeholder="Context"></textarea>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-
         </div>
+
         <div class="col-md-3">
             <h3> Recent </h3>
         </div>
+
     </div>
 
 </div>
