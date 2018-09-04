@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.Optional;
 
 @Controller
@@ -58,13 +59,15 @@ public class UserController {
         return "index";
     }
 
-    /*
-    @GetMapping(value = "/search")
-    public String searche (@PathVariable("id") long id, Model model){
 
-        model.addAttribute("users",userRespository.findById(id));
-        return "redirect:/index";
+    @GetMapping(value = "/usersearch")
+    public String searche (@RequestParam("id") Integer id, ModelMap modelMap){
+
+        modelMap.addAttribute("user",userRespository.findById(id));
+
+        //return "redirect:/index";
+        return "usersearch";
     }
 
-*/
+
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Blog</title>
 </head>
+
 <nav class="navbar navbar-primary ">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -67,38 +69,32 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
 <body>
 <div class="container">
-
     <div class="page-header">
-        <h1 class="text-center"> BLOG </h1>
+        <h1 class="text-center"> Search User</h1>
     </div>
-
-    <div class="row">
-        <div class="col-md-9">
-            <form th:action="@{/addarticle}" th:object="${article}" method="post">
-                <div class="form-group">
-                    <label for="articleTitleInput">
-                        <h3> Article Titre </h3>
-                    </label>
-                    <input type="articletitre" th:field="*{title}" class="form-control" id="articleTitleInput" placeholder="Title"/>
-                </div>
-                <div class="form-group">
-                    <textarea type="text" th:field="*{context}" class="form-control" rows="15" id="articleContextInput" placeholder="Context"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+    <form th:action="@{/usersearch}" th:object="${user}" method="get">
+        <div class="form-group">
+            <label for="userIdInput">User Id</label>
+            <input type="text" th:field="*{id}" class="form-control" id="userIdInput" placeholder="Id"/>
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
 
-        <div class="col-md-3">
-            <h3> Recent </h3>
+            <label for="userIdOutput">User Role</label>
+            <output type="text" th:field="*{id}" class="form-control" id="userIdOutput" placeholder="Id"/>
+            <label for="userNameOutput">User Role</label>
+            <output type="text" th:field="*{name}" class="form-control" id="userNameOutput" placeholder="Name"/>
+            <label for="userRoleOutput">User Role</label>
+            <output type="text" th:field="*{role}" class="form-control" id="userRoleOutput" placeholder="Role"/>
+
         </div>
+    </form>
 
-    </div>
 
 </div>
-
-
 
 </body>
 

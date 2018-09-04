@@ -34,7 +34,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/add">Add <span class="sr-only">(current)</span></a></li>
                 <li class="article"><a href="/addarticle">Article<span class="sr-only">(current)</span></a></li>
-                <li><a href="/resource">Resource</a></li>
+                <li><a href="/usersearch">Search User</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -87,12 +87,23 @@
 
             <div class="blog-post">
 
-                <h2>Heading</h2>
+                <h2>To Start</h2>
                 <p>Happiness is not about being immortal nor having food or rights in one's hand. It’s about having each tiny wish come true, or having something to eat when you are hungry or having someone's love when you need love.</p>
-                <h3>Sub-heading</h3>
-                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                <pre><code>Example code block</code></pre>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+                <h3>Add an "add" function</h3>
+                <p>Inorder to add an "add" function, we have to create two pages, one is for the function and the other is for display.</p>
+                <pre>@GetMapping(value = "/add")
+public String adduser(@ModelAttribute("user") User user){
+return "add";
+}
+
+@PostMapping(value = "/add")
+public String adduser(@ModelAttribute("user") User user, ModelMap modelMap){
+userRespository.save(user);
+modelMap.addAttribute("users",userRespository.findAll());
+return "index";
+}
+                </pre>
+                <p>Here, "add" is for our function and "index" is for our display.</p>
                 <h3>Sub-heading</h3>
                 <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
                 <ul>
@@ -193,6 +204,9 @@
                     <td th:text="${article.id}">IdArticle</td>
                     <td th:text="${article.title}">ArticleTitle</td>
                     <td th:text="${article.context}">ArticleContext</td>
+                    <td>
+                        <a class="btn btn-danger" th:href="@{/deleteArticle(id=${article.id})}">deleteArticle</a>
+                    </td>
                 </tr>
                 </thead>
             </table>
